@@ -12,20 +12,43 @@
     <script src="https://kit.fontawesome.com/d374dd1618.js" crossorigin="anonymous"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
 </head>
 <body>
     <header>
         <a href="#">
-            <img src="./assets/imgs/logo.png" alt="Lions School" class="logo">
+            <img src="../imgs/logo.png" alt="Lions School" class="logo">
         </a>
-        <a href="#" class="exit-button">
+        <a href="../../index.html" class="exit-button">
             <i class="fa-sharp fa-solid fa-arrow-up-right-from-square"></i>
-            <span>Sair</span>
+            <span>Voltar</span>
         </a>
     </header>
     <main>
-
+        <div class="filter-container">
+            <div class="dropdown">
+                <span class="name">Status</span>
+                <ul class="dropdown-childs">
+                    <li>Status</li>
+                    <li>Finalizado</li>
+                    <li>Cursando</li>
+                </ul>
+            </div>
+            <div class="legenda-container">
+                <span>LEGENDA</span>
+                <span class="status"><span class="blue label-square"></span> Cursando</span>
+                <span class="status"><span class="yellow label-square"></span> Finalizado</span>
+            </div>
+        </div>
+        <section class="content-container">
+            <span class="title" id="subject-name">Desenvolvimento de Sistemas</span>
+            <div class="cards-container">
+                <a href="./student.html" class="card yellow">
+                    <img src="../imgs/student.png" alt="" class="student-photo">
+                    <span class="student-name">MATHEUS ALVES DE OLIVEIRA</span>
+                </a>
+            </div>
+        </section>
     </main>
     <footer>
         <div class="footer-info-container">
