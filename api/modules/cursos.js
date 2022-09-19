@@ -12,3 +12,17 @@ var cursos = [
         "carga" :   "1200"
     }
 ];
+
+const getCourses = () => {
+    let courses = [];
+
+    cursos.forEach(index => {
+        courses.push(index.nome);
+    })
+
+    return courses;
+}
+
+module.exports = {
+    getCourses
+}

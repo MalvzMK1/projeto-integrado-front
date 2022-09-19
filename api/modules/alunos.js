@@ -684,3 +684,138 @@ var alunos = [
             "status" : "Cursando"
         }
 ];
+
+const getStudents = () => {
+    let studentsList = [];
+    let error = true;
+
+    alunos.forEach(index => {
+        studentsList.push(index);
+        error = false;
+    })
+
+    if (error) {
+        return false;
+    } else {
+        return studentsList;
+    }
+}
+
+const getStudentsByCourse = (courseName) => {
+    let studentsList = [];
+    let error = true;
+    
+    alunos.forEach(index => {
+        index.curso.forEach(courseIndex => {
+            if (courseIndex.nome.toLowerCase().includes(courseName.toLowerCase())) {
+
+                studentsList.push(index);
+
+                error = false;
+            }
+        });
+    });
+
+    return studentsList;
+}
+
+const getStudent = (studentEnrollment) => {
+    let student = {};
+    let erro = true;
+
+    alunos.forEach(index => {
+        if(studentEnrollment == index.matricula) {
+            student.name = index.nome;
+            student.photo = index.foto;
+            student.sex = index.sexo;
+            student.enrollment = index.matricula;
+            student.status = index.status;
+            student.course = index.curso;
+            erro = false;
+        }
+    });
+
+    if (erro) {
+        return false;
+    } else {
+        return student;
+    }
+}
+
+const getSubjects = (student) => {
+    let subjects = [];
+    let error = true
+
+    student.course.forEach(index => {
+        index.disciplinas.forEach(subjectIndex => {
+            subjects.push(subjectIndex);
+            error = false
+        });
+    });
+
+    if (error) {
+        return false;
+    } else {
+        return subjects;
+    }
+}
+
+const getStudentsByStatus = (studentStatus) => {
+    let status = studentStatus.toLowerCase();
+    let studentsList = [];
+    let error = true;
+
+    alunos.forEach(index => {
+        if (status == index.status.toLowerCase()) {
+            studentsList.push(index);
+            error = false;
+        }
+    });
+
+    if (error) {
+        return false;
+    } else {
+        return studentsList;
+    }
+}
+
+const getStudentsByConclusionYear = (year) => {
+    let conclusionYear = year;
+    let error = true;
+    let studentsList = [];
+
+    alunos.forEach(index => {
+        index.curso.forEach(courseIndex => {
+            if (conclusionYear == courseIndex.conclusao) {
+                studentsList.push(index);
+                error = false;
+            }
+        });
+    });
+
+    if (error) {
+        return false;
+    } else {
+        return studentsList;
+    }
+}
+
+module.exports = {
+    getStudents,
+    getStudentsByCourse,
+    getSubjects,
+    getStudent,
+    getStudentsByStatus,
+    getStudentsByConclusionYear,
+}
+
+/**
+ * TODO
+ * 
+ * funcao para pegar todos os alunos ☑️
+ * funcao para pegar alunos de um curso ☑️
+ * funcao para pegar as disciplinas de tal aluno ☑️
+ * funcao para pegar as informacoes de um aluno
+ * funcao para pegar os alunos por status
+ * funcao para pegar os alunos por data de finalizacao
+ */
