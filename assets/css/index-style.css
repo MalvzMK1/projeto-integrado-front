@@ -8,7 +8,7 @@ body {
 main {
     display: flex;
     justify-content: space-between;
-    align-items: flex-start;
+    align-items: center;
     gap: 5%;
     padding: 96px;
     flex-grow: 1;
@@ -17,7 +17,10 @@ main {
 .left-side-container {
     display: flex;
     align-items: center;
+    justify-content: center;
     gap: 2rem;
+    height: 100%;
+    flex-grow: 1;
 }
 
 .content-container {
@@ -47,6 +50,7 @@ main {
     align-items: center;
     justify-content: flex-start;
     gap: 50px;
+    flex-grow: 1;
 }
 
 .subject {

@@ -7,8 +7,8 @@ body {
 
 main {
     display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
+    justify-content: space-around;
+    align-items: center;
     gap: 5%;
     padding: 96px;
     flex-grow: 1;
@@ -37,9 +37,23 @@ main {
     text-shadow: 0 4px 4px 0 #000;
     color: var(--primary-color);
     font-size: 1.1rem;
+    font-family: 'Poppins', sans-serif;
+}
+
+.scores {
+    display: flex;
+    gap: 50px;
 }
 
 .subject-score {
     display: flex;
     flex-direction: column;
+    align-items: center;
+    font-family: 'Poppins', sans-serif;
+}
+
+.score-progress {
+    height: 300px;
+    width: 16px;
+    background-color: #EEEFF8;
 }
