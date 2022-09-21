@@ -3,6 +3,7 @@ const cors = require('cors');
 const bodyParser = require('body-parser');
 
 const { getStudentsByCourse, getSubjects, getStudent, getStudents, getStudentsByStatus, getStudentsByConclusionYear } = require('./modules/alunos.js');
+const { getCourses } = require('./modules/cursos');
 
 const app = express()
 
@@ -12,6 +13,17 @@ app.use((request, response, next) => {
     app.use(cors());
 
     next()
+});
+
+app.get('/cursos', cors(), async (request, response, next) => {
+    let courses = getCourses()
+
+    if (courses) {
+        response.status(200);
+        response.json(courses);
+    } else {
+        response.status(404);
+    }
 });
 
 // Endpoint para listar todos os alunos
