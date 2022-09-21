@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="../css/reset.css">
     <link rel="stylesheet" href="./css/students-list.css">
     <link rel="stylesheet" href="../css/header-footer.css">
-    <script src="./assets/js/main.js" defer type="module"></script>
+    <script src="../js/studentsList.js" defer type="module"></script>
     <script src="https://kit.fontawesome.com/d374dd1618.js" crossorigin="anonymous"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -26,14 +26,11 @@
     </header>
     <main>
         <div class="filter-container">
-            <div class="dropdown">
-                <span class="name">Status</span>
-                <ul class="dropdown-childs">
-                    <li>Status</li>
-                    <li>Finalizado</li>
-                    <li>Cursando</li>
-                </ul>
-            </div>
+            <select name="status" id="status-select">
+                <option value="status">Status</option>
+                <option value="finalizado">Finalizado</option>
+                <option value="cursando">Cursando</option>
+            </select>
             <div class="legenda-container">
                 <span>LEGENDA</span>
                 <span class="status"><span class="blue label-square"></span> Cursando</span>
@@ -43,10 +40,10 @@
         <section class="content-container">
             <span class="title" id="subject-name">Desenvolvimento de Sistemas</span>
             <div class="cards-container">
-                <a href="./student.html" class="card yellow">
+                <!-- <a href="./student.html" class="card yellow">
                     <img src="../imgs/student.png" alt="" class="student-photo">
                     <span class="student-name">MATHEUS ALVES DE OLIVEIRA</span>
-                </a>
+                </a> -->
             </div>
         </section>
     </main>

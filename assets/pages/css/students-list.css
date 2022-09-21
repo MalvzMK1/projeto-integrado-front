@@ -29,8 +29,9 @@ main {
     color: var(--primary-color);
 }
 
-.dropdown-childs {
-    display: none;
+#status-select {
+    font-size: 1rem;
+    color: var(--primary-color);
 }
 
 .legenda-container {
@@ -78,6 +79,8 @@ main {
     flex-wrap: wrap;
     justify-content: center;
     align-items: flex-start;
+    gap: 64px;
+    flex-wrap: wrap;
 }
 
 .card {

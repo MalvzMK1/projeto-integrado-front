@@ -66,3 +66,7 @@ main {
     gap: 24px;
     box-shadow: 12px 12px 4px 0px #3347B080;
 }
+
+.subject-icon {
+    height: 50%;
+}
