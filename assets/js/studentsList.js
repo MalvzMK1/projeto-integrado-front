@@ -23,9 +23,16 @@ const createStudentsCards = async (index) => {
 
     container.appendChild(card);
 
-    // console.log(index.foto, index.nome, index.curso);
+    card.addEventListener('click', (el) => {
+        el.preventDefault();
+        const studentEnrollment = index.matricula;
+
+        localStorage.setItem('enrollment', studentEnrollment);
+
+        location.href = './student.html';
+
+        console.log(studentEnrollment);
+    });
 }
 
 studentsList.forEach(createStudentsCards);
-
-console.log(studentsList);

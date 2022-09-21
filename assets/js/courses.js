@@ -10,22 +10,20 @@ const createCards = async (array) => {
     div.classList.add('subject');
     div.id = array.sigla.toLowerCase()
     div.innerHTML = `
-        <img id="${array.sigla.toLowerCase()}" src="${array.icone}" class="subject-icon"></img>
-        <span id="${array.sigla.toLowerCase()}" class="subject-title">${array.sigla}</span>
+        <img src="${array.icone}" class="subject-icon"></img>
+        <span class="subject-title">${array.sigla}</span>
     `
+    container.appendChild(div);
 
     div.addEventListener('click', (el) => {
         el.preventDefault(); 
-        const course = el.target.id
+        const course = div.id;
 
         localStorage.setItem('course', course);
 
-        location.href = './assets/pages/students-list.html'
-
-        console.log(course)
+        location.href = './assets/pages/students-list.html';
     })
 
-    container.appendChild(div);
 }
 
 courses.forEach(createCards)
