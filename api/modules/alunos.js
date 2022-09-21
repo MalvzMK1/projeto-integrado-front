@@ -707,7 +707,7 @@ const getStudentsByCourse = (courseName) => {
     
     alunos.forEach(index => {
         index.curso.forEach(courseIndex => {
-            if (courseIndex.nome.toLowerCase().includes(courseName.toLowerCase())) {
+            if (courseName.toLowerCase() == courseIndex.sigla.toLocaleLowerCase()) {
 
                 studentsList.push(index);
 

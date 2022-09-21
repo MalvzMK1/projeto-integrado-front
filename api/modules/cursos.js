@@ -17,7 +17,7 @@ const getCourses = () => {
     let courses = [];
 
     cursos.forEach(index => {
-        courses.push(index.nome);
+        courses.push(index);
     })
 
     return courses;
