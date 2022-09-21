@@ -716,7 +716,11 @@ const getStudentsByCourse = (courseName) => {
         });
     });
 
-    return studentsList;
+    if (error) {
+        return false;
+    } else {
+        return studentsList;
+    }
 }
 
 const getStudent = (studentEnrollment) => {
@@ -815,7 +819,8 @@ module.exports = {
  * funcao para pegar todos os alunos ☑️
  * funcao para pegar alunos de um curso ☑️
  * funcao para pegar as disciplinas de tal aluno ☑️
- * funcao para pegar as informacoes de um aluno
- * funcao para pegar os alunos por status
- * funcao para pegar os alunos por data de finalizacao
+ * funcao para pegar as informacoes de um aluno ☑️
+ * funcao para pegar os alunos por status ☑️
+ * funcao para pegar os alunos por data de finalizacao ☑️
+ * 
  */

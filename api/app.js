@@ -2,7 +2,7 @@ const express = require('express');
 const cors = require('cors');
 const bodyParser = require('body-parser');
 
-const { getStudentsByCourse, getSubjects, getStudent, getStudents, getStudentsByStatus } = require('./modules/alunos.js');
+const { getStudentsByCourse, getSubjects, getStudent, getStudents, getStudentsByStatus, getStudentsByConclusionYear } = require('./modules/alunos.js');
 
 const app = express()
 
@@ -14,6 +14,7 @@ app.use((request, response, next) => {
     next()
 });
 
+// Endpoint para listar todos os alunos
 app.get('/alunos', cors(), async (request, response, next) => {
     let studentsList = getStudents();
 
@@ -25,6 +26,7 @@ app.get('/alunos', cors(), async (request, response, next) => {
     }
 });
 
+// Endpoint para listar todos os alunos de um curso
 app.get('/?', cors(), async (request, response, next) => {
     let course = request.query.curso;
     
@@ -38,6 +40,7 @@ app.get('/?', cors(), async (request, response, next) => {
     }
 });
 
+// Endpoint para listar as informacoes de um aluno pelo numero de matricula
 app.get('/aluno/:matricula', cors(), async (request, response, next) => {
     let studentEnrollment = request.params.matricula;
     let studentInfo = getStudent(studentEnrollment);
@@ -50,6 +53,7 @@ app.get('/aluno/:matricula', cors(), async (request, response, next) => {
     }
 });
 
+// Endpoint para listar as disciplinas de um aluno pela matricula
 app.get('/:matricula/disciplinas', cors(), async (request, response, next) => {
     let studentEnrollment = request.params.matricula;
     let studentInfo = getStudent(studentEnrollment);
@@ -64,9 +68,23 @@ app.get('/:matricula/disciplinas', cors(), async (request, response, next) => {
     }
 });
 
-app.get('/:status/aluno', cors(), async (request, response, next) => {
+// Endpoint para listar alunos a partir de um status
+app.get('/alunos/status/:status', cors(), async (request, response, next) => {
     let status = request.params.status;
     let studentsList = getStudentsByStatus(status);
+
+    if (studentsList) {
+        response.status(200);
+        response.json(studentsList);
+    } else {
+        response.status(404);
+    }
+});
+
+// Endpoint para listar alunos a partir de um ano de conclusao
+app.get('/alunos/conclusao/:data', cors(), async (request, response, next) => {
+    let date = request.params.data;
+    let studentsList = getStudentsByConclusionYear(date);
 
     if (studentsList) {
         response.status(200);
