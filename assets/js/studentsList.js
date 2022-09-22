@@ -1,6 +1,6 @@
 'use strict'
 
-import { getStudentsByCourse } from './studentsListFetch.js';
+import { getStudentsByCourse, filterStudentsByStatus } from './studentsListFetch.js';
 
 const course = localStorage.getItem('course');
 let studentsList = await getStudentsByCourse(course);
@@ -18,7 +18,7 @@ const createStudentsCards = async (index) => {
     
     card.innerHTML = `
         <img src="${index.foto}" alt="Foto do Estudante" class="student-photo">
-        <span class="student-name">${index.nome}</span>
+        <span class="student-name">${index.nome.toUpperCase()}</span>
     `;
 
     container.appendChild(card);
@@ -34,5 +34,22 @@ const createStudentsCards = async (index) => {
         console.log(studentEnrollment);
     });
 }
+
+
+const sanitizeCards = () => {
+    const cards = document.querySelectorAll('.card');
+    cards.forEach((card) => card.remove())
+}
+const filterSelect = document.querySelector('#status-select');
+let selectValue = document.querySelector('#status-select').value;
+
+filterSelect.addEventListener('change', async () => {
+    selectValue = document.querySelector('#status-select').value;
+    studentsList = await filterStudentsByStatus(course, selectValue)
+    
+    sanitizeCards(); // limpando o container dos cards
+    
+    studentsList.forEach((e) => createStudentsCards(e)) // popula
+});
 
 studentsList.forEach(createStudentsCards);

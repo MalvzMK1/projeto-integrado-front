@@ -57,7 +57,8 @@ main {
     align-items: center;
     font-family: 'Poppins', sans-serif;
     height: 100%;
-    width: fit-content;
+    width: 10px;
+
 }
 
 .score-progress {

@@ -789,6 +789,9 @@ const filterStudentsByStatus = (studentsArray, studentStatus) => {
     let filteredArray = [];
     let error = true;
 
+    if (status == 'status') {
+        return studentsList;
+    }
     studentsList.forEach(index => {
         if (index.status.toLowerCase() == status) {
             filteredArray.push(index);
