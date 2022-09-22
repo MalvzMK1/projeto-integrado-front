@@ -1,9 +1,15 @@
 'use strict'
 
-import { getStudentsByCourse, filterStudentsByStatus } from './studentsListFetch.js';
+import { getStudentsByCourse, filterStudentsByStatus, filterStudentsByStatusAndConclusionDate } from './studentsListFetch.js';
+import { getCourses } from './coursesFetch.js';
 
 const course = localStorage.getItem('course');
-let studentsList = await getStudentsByCourse(course);
+const courses = getCourses();
+
+const changeTile = () => {
+    const container = document.querySelector('.content-container');
+    const title = document.createElement('span');
+} 
 
 const createStudentsCards = async (index) => {
     const container = document.querySelector('.cards-container');

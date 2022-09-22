@@ -16,4 +16,12 @@ const filterStudentsByStatus = async (course, status) => {
     return data;
 }
 
-export {getStudentsByCourse, filterStudentsByStatus};
+const filterStudentsByStatusAndConclusionDate = async (course, status, date) => {
+    const url = `http://localhost:8080/alunos/curso/?curso=${course}&status=${status}&conclusao=${date}`;
+    const response = await fetch(url);
+    const data = await response.json();
+
+    return data;
+}
+
+export {getStudentsByCourse, filterStudentsByStatus, filterStudentsByStatusAndConclusionDate};
