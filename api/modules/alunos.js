@@ -783,6 +783,26 @@ const getStudentsByStatus = (studentStatus) => {
     }
 }
 
+const filterStudentsByStatus = (studentsArray, studentStatus) => {
+    let status = studentStatus.toLowerCase();
+    let studentsList = studentsArray;
+    let filteredArray = [];
+    let error = true;
+
+    studentsList.forEach(index => {
+        if (index.status.toLowerCase() == status) {
+            filteredArray.push(index);
+            error = false;
+        }
+    });
+
+    if (error) {
+        return false;
+    } else {
+        return filteredArray;
+    }
+}
+
 const getStudentsByConclusionYear = (year) => {
     let conclusionYear = year;
     let error = true;
@@ -811,6 +831,7 @@ module.exports = {
     getStudent,
     getStudentsByStatus,
     getStudentsByConclusionYear,
+    filterStudentsByStatus
 }
 
 /**
