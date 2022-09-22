@@ -19,16 +19,32 @@ const loadProfile = () => {
     main.appendChild(profileContainer);
 }
 
-const loadGrades = () => {
-    const main = document.querySelector('main');
-    const gradesContainer = document.createElement('div');
-    gradesContainer.classList.add('scores');
-    gradesContainer.innerHTML = `
-    
-    `
+const createGrade = (index) => {
+    const container = document.querySelector('.scores');
 
-    main.appendChild(gradesContainer)
+    const gradeContainer = document.createElement('div');
+    gradeContainer.classList.add('subject-score');
+
+    const grade = document.createElement('span');
+    grade.classList.add('score');
+    grade.textContent = index.media;
+    
+    const progressBar = document.createElement('progress');
+    progressBar.classList.add('score-progress');
+    progressBar.max = '100';
+    progressBar.value = index.media;
+    
+    const subjectInitials = document.createElement('span');
+    subjectInitials.classList.add('subject-initials');
+    subjectInitials.textContent = index.nome;
+
+    gradeContainer.appendChild(grade);
+    gradeContainer.appendChild(progressBar);
+    gradeContainer.appendChild(subjectInitials);
+    
+    container.appendChild(gradeContainer)
+    console.log(grade, progressBar, subjectInitials);
 }
 
 loadProfile()
-// loadGrades()
+studentSubjects.forEach(createGrade)
