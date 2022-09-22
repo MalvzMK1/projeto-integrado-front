@@ -827,6 +827,28 @@ const getStudentsByConclusionYear = (year) => {
     }
 }
 
+const filterStudentsByConclusionYear = (studentsArray, year) => {
+    let conclusionYear = year;
+    let studentsList = studentsArray;
+    let filteredArray = [];
+    let error = true;
+
+    studentsList.forEach(index => {
+        index.curso.forEach(courseIndex => {
+            if (courseIndex.conclusao == conclusionYear) {
+                filteredArray.push(index);
+                error = false;
+            }
+        });
+    });
+
+    if (error) {
+        return false;
+    } else {
+        return filteredArray;
+    }
+}
+
 module.exports = {
     getStudents,
     getStudentsByCourse,
@@ -834,7 +856,8 @@ module.exports = {
     getStudent,
     getStudentsByStatus,
     getStudentsByConclusionYear,
-    filterStudentsByStatus
+    filterStudentsByStatus,
+    filterStudentsByConclusionYear
 }
 
 /**
