@@ -1,6 +1,7 @@
 'use strict'
 
 import {getStudentInfo, getSubjects} from './studentFetch.js';
+import createSubjectInitials from './utils/createInitials.js';
 
 const enrollment = localStorage.getItem('enrollment');
 
@@ -8,15 +9,19 @@ const studentInfo = await getStudentInfo(enrollment);
 const studentSubjects = await getSubjects(enrollment);
 
 const loadProfile = () => {
-    const main = document.querySelector('main');
-    const profileContainer = document.createElement('div');
-    profileContainer.classList.add('profile');
-    profileContainer.innerHTML = `
-    <img src="${studentInfo.photo}" alt="Foto do estudante" class="profile-photo">
-    <p class="profile-name">${studentInfo.name.toUpperCase()}</p>
-    `;
+    const profileContainer = document.querySelector('.profile');
 
-    main.appendChild(profileContainer);
+    const photo = document.createElement('img');
+    photo.classList.add('profile-photo');
+    photo.src = studentInfo.photo;
+    photo.alt = 'Foto do Estudante';
+
+    const name = document.createElement('span');
+    name.classList.add('profile-name');
+    name.textContent = studentInfo.name.toUpperCase();
+
+    profileContainer.appendChild(photo);
+    profileContainer.appendChild(name);
 }
 
 const createGrade = (index) => {
@@ -36,14 +41,13 @@ const createGrade = (index) => {
     
     const subjectInitials = document.createElement('span');
     subjectInitials.classList.add('subject-initials');
-    subjectInitials.textContent = index.nome;
+    subjectInitials.textContent = createSubjectInitials(index.nome);
 
     gradeContainer.appendChild(grade);
     gradeContainer.appendChild(progressBar);
     gradeContainer.appendChild(subjectInitials);
     
     container.appendChild(gradeContainer)
-    console.log(grade, progressBar, subjectInitials);
 }
 
 loadProfile()
