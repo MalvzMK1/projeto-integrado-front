@@ -4,12 +4,26 @@ import { getStudentsByCourse, filterStudentsByStatus, filterStudentsByStatusAndC
 import { getCourses } from './coursesFetch.js';
 
 const course = localStorage.getItem('course');
-const courses = getCourses();
+const courses = await getCourses();
+let titleContent = '';
+
+// console.log(courses);
+
+courses.forEach(index => {
+    console.log(course);
+    if (index.sigla.toLowerCase() == course) {
+        titleContent = index.nome.split(' - ')[1];
+    }
+});
+
+let studentsList = await getStudentsByCourse(course);
 
 const changeTile = () => {
-    const container = document.querySelector('.content-container');
-    const title = document.createElement('span');
-} 
+    const title = document.querySelector('#subject-name');
+    title.textContent = titleContent;
+}
+
+changeTile();
 
 const createStudentsCards = async (index) => {
     const container = document.querySelector('.cards-container');
