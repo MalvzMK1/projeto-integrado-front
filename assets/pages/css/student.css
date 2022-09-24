@@ -65,4 +65,29 @@ main {
 .score-progress {
     transform: rotate(-90deg);
     width: 17rem;
+    -webkit-appearance: none;
+    border-radius: 0.75rem;
+}
+
+.score-progress::-webkit-progress-bar {
+    background-color: #ebebeb;
+    border-radius: 0.2rem;
+}
+
+.score-progress::-webkit-progress-value {
+    background-color: var(--primary-color);
+    border-radius: 0.2rem;
+    box-shadow: 0 0 0.7rem var(--primary-color);
+}
+
+.disapproved::-webkit-progress-value {
+    background-color: var(--disapproved-red);
+    border-radius: 0.2rem;
+    box-shadow: 0 0 0.7rem var(--disapproved-red);
+}
+
+.exam::-webkit-progress-value {
+    background-color: var(--terciary-color);
+    border-radius: 0.2rem;
+    box-shadow: 0 0 0.7rem var(--terciary-color);
 }

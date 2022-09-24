@@ -38,6 +38,12 @@ const createGrade = (index) => {
     progressBar.classList.add('score-progress');
     progressBar.max = '100';
     progressBar.value = index.media;
+
+    if (index.media < 70 && index.media >= 50) {
+        progressBar.classList.add('exam');
+    } else if (index.media < 50) {
+        progressBar.classList.add('disapproved');
+    }
     
     const subjectInitials = document.createElement('span');
     subjectInitials.classList.add('subject-initials');
