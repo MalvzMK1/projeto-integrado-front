@@ -7,12 +7,9 @@ const course = localStorage.getItem('course');
 const courses = await getCourses();
 let titleContent = '';
 
-// console.log(courses);
-
 courses.forEach(index => {
-    console.log(course);
     if (index.sigla.toLowerCase() == course) {
-        titleContent = index.nome.split(' - ')[1];
+        titleContent = index.nome.split(' - ')[1].replace('Técnico em ', '');
     }
 });
 
@@ -50,8 +47,6 @@ const createStudentsCards = async (index) => {
         localStorage.setItem('enrollment', studentEnrollment);
 
         location.href = './student.html';
-
-        console.log(studentEnrollment);
     });
 }
 
@@ -60,6 +55,7 @@ const sanitizeCards = () => {
     const cards = document.querySelectorAll('.card');
     cards.forEach((card) => card.remove())
 }
+
 const filterSelect = document.querySelector('#status-select');
 let selectValue = document.querySelector('#status-select').value;
 
