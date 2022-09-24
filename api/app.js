@@ -114,9 +114,11 @@ app.get('/alunos/conclusao/:data', cors(), async (request, response, next) => {
     }
 });
 
-app.get('/conclusao/:curso', cors(), async (request, response, next) => {
-    let course = request.params.curso;
-    let conclusionYears = getConclusionYears(course);
+app.get('/conclusao/?', cors(), async (request, response, next) => {
+    let course = request.query.curso;
+    let status = request.query.status;
+
+    let conclusionYears = getConclusionYears(course, status);
 
     if (conclusionYears) {
         response.status(200);
