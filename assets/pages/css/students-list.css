@@ -14,7 +14,7 @@ main {
     flex-grow: 1;
 }
 
-.filter-container {
+.nav-container {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -29,12 +29,19 @@ main {
     color: var(--primary-color);
 }
 
+.filters-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 200px;
+}
+
 #status-select {
     font-size: 1rem;
     color: var(--primary-color);
 }
 
-.legenda-container {
+.label-container {
     display: flex;
     gap: 24px;
 }
