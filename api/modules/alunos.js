@@ -806,6 +806,27 @@ const filterStudentsByStatus = (studentsArray, studentStatus) => {
     }
 }
 
+const getConclusionYears = (courseInitial) => {
+    let years = [];
+    let course = courseInitial.toLowerCase();
+    let error = true;
+    
+    alunos.forEach(index => {
+        index.curso.forEach(courseIndex => {
+            if (course == courseIndex.sigla.toLowerCase()) {
+                years.push(courseIndex.conclusao);
+                error = false;
+            }
+        });
+    });
+
+    if (error) {
+        return false;
+    } else {
+        return years;
+    }
+}
+
 const getStudentsByConclusionYear = (year) => {
     let conclusionYear = year;
     let error = true;
@@ -857,7 +878,8 @@ module.exports = {
     getStudentsByStatus,
     getStudentsByConclusionYear,
     filterStudentsByStatus,
-    filterStudentsByConclusionYear
+    filterStudentsByConclusionYear,
+    getConclusionYears
 }
 
 /**

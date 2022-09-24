@@ -2,7 +2,7 @@ const express = require('express');
 const cors = require('cors');
 const bodyParser = require('body-parser');
 
-const { getStudentsByCourse, getSubjects, getStudent, getStudents, getStudentsByStatus, getStudentsByConclusionYear, filterStudentsByStatus, filterStudentsByConclusionYear } = require('./modules/alunos.js');
+const { getStudentsByCourse, getSubjects, getStudent, getStudents, getStudentsByStatus, getStudentsByConclusionYear, filterStudentsByStatus, filterStudentsByConclusionYear, getConclusionYears } = require('./modules/alunos.js');
 const { getCourses } = require('./modules/cursos');
 
 const app = express()
@@ -111,6 +111,18 @@ app.get('/alunos/conclusao/:data', cors(), async (request, response, next) => {
         response.json(studentsList);
     } else {
         response.status(404);
+    }
+});
+
+app.get('/conclusao/:curso', cors(), async (request, response, next) => {
+    let course = request.params.curso;
+    let conclusionYears = getConclusionYears(course);
+
+    if (conclusionYears) {
+        response.status(200);
+        response.json(conclusionYears);
+    } else {
+        response.status(500);
     }
 });
 
