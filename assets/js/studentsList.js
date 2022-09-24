@@ -1,6 +1,10 @@
 'use strict'
 
-import { getStudentsByCourse, filterStudentsByStatus, filterStudentsByStatusAndConclusionDate } from './studentsListFetch.js';
+import { getStudentsByCourse, 
+    filterStudentsByStatus, 
+    filterStudentsByStatusAndConclusionDate, 
+    getYears } from './studentsListFetch.js';
+
 import { getCourses } from './coursesFetch.js';
 
 const course = localStorage.getItem('course');
@@ -69,3 +73,17 @@ filterSelect.addEventListener('change', async () => {
 });
 
 studentsList.forEach(createStudentsCards);
+
+const yearSelectInput = document.querySelector('#conclusion-select');
+
+const createYearsOptions = async (year) => {
+    const yearOption = document.createElement('option');
+    yearOption.value = year;
+    yearOption.textContent = year;
+
+    yearSelectInput.appendChild(yearOption);
+}
+
+let years = await getYears(course);
+console.log(years)
+years.forEach(createYearsOptions);

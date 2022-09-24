@@ -24,4 +24,17 @@ const filterStudentsByStatusAndConclusionDate = async (course, status, date) => 
     return data;
 }
 
-export {getStudentsByCourse, filterStudentsByStatus, filterStudentsByStatusAndConclusionDate};
+const getYears = async (course) => {
+    const url = `http://localhost:8080/conclusao/${course}`;
+    const response = await fetch(url);
+    const data = await response.json();
+
+    return data;
+}
+
+export {
+    getStudentsByCourse,
+    filterStudentsByStatus,
+    filterStudentsByStatusAndConclusionDate,
+    getYears
+};
