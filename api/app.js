@@ -46,10 +46,10 @@ app.get('/alunos/curso/?', cors(), async (request, response, next) => {
     
     let studentsList = getStudentsByCourse(course);
     if (status != undefined) {
-        studentsList = filterStudentsByStatus(studentsList, status);
+        studentsList = await filterStudentsByStatus(studentsList, status);
     }
     if (conclusionDate != undefined) {
-        studentsList = filterStudentsByConclusionYear(studentsList, conclusionDate);
+        studentsList = await filterStudentsByConclusionYear(studentsList, conclusionDate);
     }
 
     if (studentsList) {

@@ -36,9 +36,14 @@ main {
     gap: 200px;
 }
 
-#status-select {
+#status-select, #conclusion-select {
     font-size: 1rem;
     color: var(--primary-color);
+}
+
+#status-select option, #conclusion-select option{
+    background-color: var(--primary-color);
+    color: #fff;
 }
 
 .label-container {

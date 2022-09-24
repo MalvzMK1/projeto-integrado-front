@@ -849,10 +849,14 @@ const getStudentsByConclusionYear = (year) => {
 }
 
 const filterStudentsByConclusionYear = (studentsArray, year) => {
-    let conclusionYear = year;
+    let conclusionYear = year.toLowerCase();
     let studentsList = studentsArray;
     let filteredArray = [];
     let error = true;
+
+    if (conclusionYear == 'ano de conclusão') {
+        return studentsList
+    }
 
     studentsList.forEach(index => {
         index.curso.forEach(courseIndex => {

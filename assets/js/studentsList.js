@@ -60,30 +60,83 @@ const sanitizeCards = () => {
     cards.forEach((card) => card.remove())
 }
 
-const filterSelect = document.querySelector('#status-select');
-let selectValue = document.querySelector('#status-select').value;
-
-filterSelect.addEventListener('change', async () => {
-    selectValue = document.querySelector('#status-select').value;
-    studentsList = await filterStudentsByStatus(course, selectValue)
-    
-    sanitizeCards(); // limpando o container dos cards
-    
-    studentsList.forEach((e) => createStudentsCards(e)) // popula
-});
-
-studentsList.forEach(createStudentsCards);
-
+const statusFilterSelect = document.querySelector('#status-select');
+let statusSelectValue = document.querySelector('#status-select').value;
 const yearSelectInput = document.querySelector('#conclusion-select');
+let yearSelectInputValue = document.querySelector('#conclusion-select').value;
 
 const createYearsOptions = async (year) => {
     const yearOption = document.createElement('option');
     yearOption.value = year;
     yearOption.textContent = year;
-
+    
     yearSelectInput.appendChild(yearOption);
 }
 
 let years = await getYears(course);
-console.log(years)
 years.forEach(createYearsOptions);
+
+const listenSelectValues = async () => {
+    statusFilterSelect.addEventListener('change', async () => {
+        statusSelectValue = document.querySelector('#status-select').value;
+    });
+    yearSelectInput.addEventListener('change', async () => {
+        yearSelectInputValue = document.querySelector('#conclusion-select').value;
+    });
+
+    studentsList = await filterStudentsByStatusAndConclusionDate(course, statusSelectValue, yearSelectInputValue);
+    sanitizeCards();
+
+    if (studentsList) {
+        studentsList.forEach((e) => createStudentsCards(e))
+    }
+
+    console.log(studentsList);
+    // statusFilterSelect.addEventListener('change', async () => {
+    //     statusSelectValue = document.querySelector('#status-select').value;
+    //     studentsList = await filterStudentsByStatus(course, statusSelectValue)
+        
+    //     sanitizeCards(); // limpando o container dos cards
+
+    //     if (studentsList) {
+    //         studentsList.forEach((e) => createStudentsCards(e)) // popula
+    //     }
+    // });
+
+    // yearSelectInput.addEventListener('change', async () => {
+    //     yearSelectInputValue = document.querySelector('#conclusion-select').value;
+    //     studentsList = await filterStudentsByStatusAndConclusionDate(course, statusSelectValue, yearSelectInputValue);
+        
+    //     sanitizeCards();
+        
+    //     if (studentsList) {
+    //         studentsList.forEach((e) => createStudentsCards(e))
+    //     }
+    // });
+};
+
+statusFilterSelect.addEventListener('change', async () => {
+    statusSelectValue = document.querySelector('#status-select').value;
+    studentsList = await filterStudentsByStatus(course, statusSelectValue)
+    
+    sanitizeCards(); // limpando o container dos cards
+
+    if (studentsList) {
+        studentsList.forEach((e) => createStudentsCards(e)) // popula
+    }
+});
+
+yearSelectInput.addEventListener('change', async () => {
+    yearSelectInputValue = document.querySelector('#conclusion-select').value;
+    studentsList = await filterStudentsByStatusAndConclusionDate(course, statusSelectValue, yearSelectInputValue);
+    
+    sanitizeCards();
+    
+    if (studentsList) {
+        studentsList.forEach((e) => createStudentsCards(e))
+    }
+});
+
+listenSelectValues();
+
+studentsList.forEach(createStudentsCards);
