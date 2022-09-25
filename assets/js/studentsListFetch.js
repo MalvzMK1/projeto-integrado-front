@@ -8,14 +8,6 @@ const getStudentsByCourse = async (course) => {
     return data;
 }
 
-const filterStudentsByStatus = async (course, status) => {
-    const url = `http://localhost:8080/alunos/curso/?curso=${course}&status=${status}`;
-    const response = await fetch(url);
-    const data = await response.json();
-
-    return data;
-}
-
 const filterStudentsByStatusAndConclusionDate = async (course, status, date) => {
     const url = `http://localhost:8080/alunos/curso/?curso=${course}&status=${status}&conclusao=${date}`;
     const response = await fetch(url);
@@ -34,7 +26,6 @@ const getYears = async (course, status) => {
 
 export {
     getStudentsByCourse,
-    filterStudentsByStatus,
     filterStudentsByStatusAndConclusionDate,
     getYears
 };
