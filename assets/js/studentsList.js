@@ -73,70 +73,38 @@ const createYearsOptions = async (year) => {
     yearSelectInput.appendChild(yearOption);
 }
 
-let years = await getYears(course);
+let years = await getYears(course, statusSelectValue);
 years.forEach(createYearsOptions);
 
-const listenSelectValues = async () => {
-    statusFilterSelect.addEventListener('change', async () => {
-        statusSelectValue = document.querySelector('#status-select').value;
-    });
-    yearSelectInput.addEventListener('change', async () => {
-        yearSelectInputValue = document.querySelector('#conclusion-select').value;
-    });
-
-    studentsList = await filterStudentsByStatusAndConclusionDate(course, statusSelectValue, yearSelectInputValue);
-    sanitizeCards();
-
-    if (studentsList) {
-        studentsList.forEach((e) => createStudentsCards(e))
-    }
-
-    console.log(studentsList);
-    // statusFilterSelect.addEventListener('change', async () => {
-    //     statusSelectValue = document.querySelector('#status-select').value;
-    //     studentsList = await filterStudentsByStatus(course, statusSelectValue)
-        
-    //     sanitizeCards(); // limpando o container dos cards
-
-    //     if (studentsList) {
-    //         studentsList.forEach((e) => createStudentsCards(e)) // popula
-    //     }
-    // });
-
-    // yearSelectInput.addEventListener('change', async () => {
-    //     yearSelectInputValue = document.querySelector('#conclusion-select').value;
-    //     studentsList = await filterStudentsByStatusAndConclusionDate(course, statusSelectValue, yearSelectInputValue);
-        
-    //     sanitizeCards();
-        
-    //     if (studentsList) {
-    //         studentsList.forEach((e) => createStudentsCards(e))
-    //     }
-    // });
-};
+studentsList.forEach(createStudentsCards);
 
 statusFilterSelect.addEventListener('change', async () => {
     statusSelectValue = document.querySelector('#status-select').value;
-    studentsList = await filterStudentsByStatus(course, statusSelectValue)
-    
+    yearSelectInputValue = document.querySelector('#conclusion-select').value;
+
+    studentsList = await filterStudentsByStatusAndConclusionDate(course, statusSelectValue, yearSelectInputValue);
+    years = await getYears(course, statusSelectValue);
+
     sanitizeCards(); // limpando o container dos cards
 
     if (studentsList) {
         studentsList.forEach((e) => createStudentsCards(e)) // popula
     }
+
+    console.log(years)
 });
 
 yearSelectInput.addEventListener('change', async () => {
     yearSelectInputValue = document.querySelector('#conclusion-select').value;
+    statusSelectValue = document.querySelector('#status-select').value;
+
     studentsList = await filterStudentsByStatusAndConclusionDate(course, statusSelectValue, yearSelectInputValue);
+    years = await getYears(course, statusSelectValue);
     
     sanitizeCards();
     
     if (studentsList) {
         studentsList.forEach((e) => createStudentsCards(e))
     }
+    console.log(years)
 });
-
-listenSelectValues();
-
-studentsList.forEach(createStudentsCards);

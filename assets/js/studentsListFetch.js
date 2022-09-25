@@ -24,8 +24,8 @@ const filterStudentsByStatusAndConclusionDate = async (course, status, date) => 
     return data;
 }
 
-const getYears = async (course) => {
-    const url = `http://localhost:8080/conclusao/${course}`;
+const getYears = async (course, status) => {
+    const url = `http://localhost:8080/conclusao/?curso=${course}&status=${status}`;
     const response = await fetch(url);
     const data = await response.json();
 
