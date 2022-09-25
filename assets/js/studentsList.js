@@ -60,6 +60,11 @@ const sanitizeCards = () => {
     cards.forEach((card) => card.remove())
 }
 
+const sanitizeOptions = () => {
+    const option = document.querySelectorAll('.year-option');
+    option.forEach((option) => option.remove())
+}
+
 const statusFilterSelect = document.querySelector('#status-select');
 let statusSelectValue = document.querySelector('#status-select').value;
 const yearSelectInput = document.querySelector('#conclusion-select');
@@ -89,6 +94,9 @@ statusFilterSelect.addEventListener('change', async () => {
 
     studentsList = await filterStudentsByStatusAndConclusionDate(course, statusSelectValue, yearSelectInputValue);
     years = await getYears(course, statusSelectValue);
+    sanitizeOptions();
+    years.forEach(createYearsOptions);
+
 
     sanitizeCards(); // limpando o container dos cards
 
@@ -105,6 +113,9 @@ yearSelectInput.addEventListener('change', async () => {
 
     studentsList = await filterStudentsByStatusAndConclusionDate(course, statusSelectValue, yearSelectInputValue);
     years = await getYears(course, statusSelectValue);
+    sanitizeOptions();
+    years.forEach(createYearsOptions);
+
     
     sanitizeCards();
     

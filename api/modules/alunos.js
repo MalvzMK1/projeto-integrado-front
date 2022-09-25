@@ -815,7 +815,7 @@ const getConclusionYears = (courseInitial, studentStatus) => {
     alunos.forEach(index => {
         index.curso.forEach(courseIndex => {
             if (course == courseIndex.sigla.toLowerCase()) {
-                if (status == undefined || status == '' || status.toLowerCase() != 'finalizado' || status.toLowerCase() != 'cursando') {
+                if (status == undefined || status == '' || status.toLowerCase() != 'finalizado' && status.toLowerCase() != 'cursando') {
                     years.push(courseIndex.conclusao);
                     error = false;
                 } else if (status.toLowerCase() == index.status.toLowerCase()) {
