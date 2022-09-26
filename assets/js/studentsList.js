@@ -102,8 +102,6 @@ statusFilterSelect.addEventListener('change', async () => {
     if (studentsList) {
         studentsList.forEach((e) => createStudentsCards(e)) // popula
     }
-
-    console.log(years)
 });
 
 yearSelectInput.addEventListener('change', async () => {
@@ -115,11 +113,9 @@ yearSelectInput.addEventListener('change', async () => {
     sanitizeOptions();
     years.forEach(createYearsOptions);
     
-    
     sanitizeCards();
     
     if (studentsList) {
         studentsList.forEach((e) => createStudentsCards(e))
     }
-    console.log(years)
 });

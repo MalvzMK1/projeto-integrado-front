@@ -60,3 +60,38 @@ footer {
     border: 2px solid #fff;
     font-size: 1.2rem;
 }
+
+@media (max-width: 1000px) {
+    header {
+        padding: 0 12px;
+    }
+
+    footer {
+        padding: 0 12px;
+        position: fixed;
+        bottom: 0;
+        box-shadow: 0 -4px 5px #0005;
+    }
+
+    .footer-info-container i {
+        font-size: 1.1rem;
+    }
+
+    .info {
+        font-size: 0.5rem;
+    }
+
+    .copyright-tag {
+        display: none;
+    }
+
+    .social-icons-container {
+        gap: 8px;
+    }
+
+    .icon {
+        height: 36px;
+        width: 36px;
+        font-size: 1.1rem;
+    }
+}
