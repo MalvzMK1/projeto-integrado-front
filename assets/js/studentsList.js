@@ -109,9 +109,6 @@ yearSelectInput.addEventListener('change', async () => {
     statusSelectValue = document.querySelector('#status-select').value;
     
     studentsList = await filterStudentsByStatusAndConclusionDate(course, statusSelectValue, yearSelectInputValue);
-    years = await getYears(course, statusSelectValue);
-    sanitizeOptions();
-    years.forEach(createYearsOptions);
     
     sanitizeCards();
     
