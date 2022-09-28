@@ -62,7 +62,21 @@ main {
     font-family: 'Poppins', sans-serif;
     height: 100%;
     width: 10px;
+    font-size: 1.2rem;
+}
 
+.score {
+    font-weight: 500;
+    color: var(--primary-color);
+    text-shadow: 0 4px 0.2rem #00000025;
+}
+
+.exam-score {
+    color: var(--terciary-color);
+}
+
+.disapproved-score {
+    color: var(--disapproved-red)
 }
 
 .score-progress {
@@ -141,7 +155,7 @@ main {
     }
 
     .subject-initials {
-        font-size: 0.5rem;
+        font-size: 0.7rem;
         font-weight: bolder;
     }
 }

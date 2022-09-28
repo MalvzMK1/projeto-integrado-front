@@ -1,7 +1,7 @@
 'use strict'
 
 const getCourses = async () => {
-    const url = 'http://localhost:8080/cursos';
+    const url = 'https://api-senai-projeto-integrado.netlify.app/.netlify/functions/api/cursos';
     const response = await fetch(url);
     const data = await response.json();
 

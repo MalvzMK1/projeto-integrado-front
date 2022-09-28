@@ -41,8 +41,10 @@ const createGrade = (index) => {
 
     if (index.media < 70 && index.media >= 50) {
         progressBar.classList.add('exam');
+        grade.classList.add('exam-score');
     } else if (index.media < 50) {
         progressBar.classList.add('disapproved');
+        grade.classList.add('disapproved-score');
     }
     
     const subjectInitials = document.createElement('span');

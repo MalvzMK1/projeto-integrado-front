@@ -1,7 +1,7 @@
 'use strict'
 
 const getStudentsByCourse = async (course) => {
-    const url = `http://localhost:8080/alunos/curso/?curso=${course}`;
+    const url = `https://api-senai-projeto-integrado.netlify.app/.netlify/functions/api/alunos/curso/?curso=${course}`;
     const response = await fetch(url);
     const data = await response.json();
 
@@ -9,7 +9,7 @@ const getStudentsByCourse = async (course) => {
 }
 
 const filterStudentsByStatusAndConclusionDate = async (course, status, date) => {
-    const url = `http://localhost:8080/alunos/curso/?curso=${course}&status=${status}&conclusao=${date}`;
+    const url = `https://api-senai-projeto-integrado.netlify.app/.netlify/functions/api/alunos/curso/?curso=${course}&status=${status}&conclusao=${date}`;
     const response = await fetch(url);
     const data = await response.json();
 
@@ -17,7 +17,7 @@ const filterStudentsByStatusAndConclusionDate = async (course, status, date) => 
 }
 
 const getYears = async (course, status) => {
-    const url = `http://localhost:8080/conclusao/?curso=${course}&status=${status}`;
+    const url = `https://api-senai-projeto-integrado.netlify.app/.netlify/functions/api/conclusao/?curso=${course}&status=${status}`;
     const response = await fetch(url);
     const data = await response.json();
 
