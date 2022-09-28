@@ -22,6 +22,11 @@ footer {
 
 .exit-button {
     font-size: 2em;
+    transition: all 400ms ease-in-out;
+}
+
+.exit-button:hover {
+    transform: scale(1.1);
 }
 
 .footer-info-container {
@@ -59,6 +64,13 @@ footer {
     border-radius: 50%;
     border: 2px solid #fff;
     font-size: 1.2rem;
+    transition: all 400ms ease-in-out;
+}
+
+.icon:hover {
+    transform: scale(1.1);
+    background-color: #fff;
+    color: #101010;
 }
 
 @media (max-width: 1000px) {

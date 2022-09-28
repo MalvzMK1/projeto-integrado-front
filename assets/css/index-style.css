@@ -65,6 +65,12 @@ main {
     font-weight: bolder;
     gap: 24px;
     box-shadow: 12px 12px 4px 0px #3347B080;
+    transition: all 400ms ease-in-out;
+    border-radius: 10px;
+}
+
+.subject:hover {
+    transform: scale(1.1);
 }
 
 .subject-icon {
