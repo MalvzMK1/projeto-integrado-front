@@ -30,9 +30,9 @@ const createStudentsCards = async (index) => {
     const card = document.createElement('div');
     card.classList.add('card');
 
-    if (index.status.toLowerCase() ==  'cursando') {
+    if (index.status.toLowerCase() ==  'finalizado') {
         card.classList.add('yellow');
-    } else if (index.status.toLowerCase() == 'finalizado') {
+    } else if (index.status.toLowerCase() == 'cursando') {
         card.classList.add('blue');
     }
     
