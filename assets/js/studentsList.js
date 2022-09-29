@@ -69,10 +69,6 @@ let statusSelectValue = document.querySelector('#status-select').value;
 const yearSelectInput = document.querySelector('#conclusion-select');
 let yearSelectInputValue = document.querySelector('#conclusion-select').value;
 
-// if (statusSelectValue == 'status') {
-//     statusSelectValue = undefined;
-// }
-
 const createYearsOptions = async (year) => {
     const yearOption = document.createElement('option');
     yearOption.value = year;
@@ -97,10 +93,10 @@ statusFilterSelect.addEventListener('change', async () => {
     years.forEach(createYearsOptions);
 
 
-    sanitizeCards(); // limpando o container dos cards
+    sanitizeCards();
 
     if (studentsList) {
-        studentsList.forEach((e) => createStudentsCards(e)) // popula
+        studentsList.forEach((e) => createStudentsCards(e))
     }
 });
 
