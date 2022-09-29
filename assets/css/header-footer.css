@@ -80,7 +80,7 @@ footer {
 
     footer {
         padding: 0 12px;
-        position: fixed;
+        /* position: fixed; */
         bottom: 0;
         box-shadow: 0 -4px 5px #0005;
     }
