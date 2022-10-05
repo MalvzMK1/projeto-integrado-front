@@ -5,6 +5,7 @@ body {
     height: fit-content;
 }
 
+/* Arrumando o espaçamento entre as divs - space evenly */
 main {
     display: flex;
     justify-content: space-evenly;
